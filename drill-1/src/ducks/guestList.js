@@ -1,5 +1,5 @@
-const initialState = []
+const initialState = [];
 
-export default function reducer(state = initialState, action) {
+export default function guestList(state, action){
   return state;
 }

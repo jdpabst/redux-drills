@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 import store from './store'
 import './index.css';
 
-
+// must pass Provider the store prop.
 ReactDOM.render(
-    <Provider store="store">
+    <Provider store={ store }>
         <App />
     </Provider>
     , document.getElementById('root'));

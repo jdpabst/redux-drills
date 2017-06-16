@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import store from './store';
+import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
@@ -8,10 +10,10 @@ class App extends Component {
         <h1>DevMountain Hackathon</h1>
         <h3>Guest List:</h3>
         <ul>
-          {{/*??*/}.map( (guest, i) => {
+          {this.props.guestList.map( (guest, i) => {
             return (
               <div key={i} className="list-item">
-                <li>{/**/}</li>
+                <li>{guest}</li>
                 <button type="" className="">Remove</button>
               </div>
             )
@@ -26,6 +28,11 @@ class App extends Component {
   }
 }
 
-// mapStateToProps
-
+// mapStateToProps -- state reps entire global application state from redux store. Then we can pull off anything we need. Whatever gets returned from this function, gets returned to props.
+function mapStateToProps(state){
+  return {
+    guestList: state,
+  }
+}
 //connect
+export default connect(mapStateToProps)(App)

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import './EditGuest.css';
+import { connect } from 'react-redux';
+import { updateGuest } from './../../ducks/guestList'
 
 class EditGuest extends Component {
+  // has its own input box, needs to keep track of what is being typed. //
   constructor(props) {
     super(props);
+
     this.state = {
       text: this.props.guest
     }
@@ -19,6 +23,7 @@ class EditGuest extends Component {
 
   update() {
     // update guest name function
+    this.props.updateGuest(this.state.text, this.props.guestIndex);
     this.props.hide();
   }
 
@@ -47,4 +52,5 @@ class EditGuest extends Component {
   }
 }
 
-export default EditGuest;
+// no mapStateToProps, first argument is 'null', second argument is object
+export default connect(null, {updateGuest})(EditGuest);

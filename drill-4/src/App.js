@@ -15,6 +15,7 @@ class App extends Component {
       guestToEdit: '',
       guestIndex: 0
     }
+    // bind 'this' to function when it is used inside function! //
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.editName = this.editName.bind(this);
@@ -84,7 +85,11 @@ class App extends Component {
         </form>
         {
            this.state.edit ?
-                <EditGuest />
+                <EditGuest 
+                  hide={ this.hideModal } 
+                  guest= { this.state.guestToEdit }
+                  guestIndex = { this.state.guestIndex }
+                  />
                 : null
         }
       </div>
